@@ -5,7 +5,7 @@ const router = express.Router();
 import { isAdmin, requireSignIn } from "../middlewares/auth.middleware.js";
 //controllers
 import {
-  getCategoryById,
+  getCategoryBySlug,
   getAllCategoryList,
   removeCategoryById,
   updateCategoryById,
@@ -21,6 +21,6 @@ router.delete(
   removeCategoryById
 );
 router.get("/categories", getAllCategoryList);
-router.get("/category/:slug", getCategoryById);
+router.get("/category/:slug", getCategoryBySlug);
 
 export default router;

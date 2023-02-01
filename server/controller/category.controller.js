@@ -55,7 +55,7 @@ export const getAllCategoryList = async (req, res) => {
   }
 };
 
-export const getCategoryById = async (req, res) => {
+export const getCategoryBySlug = async (req, res) => {
   try {
     const category = await Category.findOne({ slug: req.params.slug });
     res.json(category);
