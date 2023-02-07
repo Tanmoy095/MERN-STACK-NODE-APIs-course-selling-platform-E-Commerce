@@ -3,7 +3,7 @@ import formidable from "express-formidable";
 const router = express.Router();
 
 //middleware
-import { isAdmin, requireSignIn } from "../middlewares/auth.middleware.js";
+import { isAdmin, requireSignIn } from "../../middlewares/auth.middleware.js";
 //controllers
 import {
   createProduct,
@@ -12,7 +12,7 @@ import {
   getPhotoById,
   deleteProductById,
   updateProductById,
-} from "../controller/product.controller.js";
+} from "../../controller/Product/product.controller.js";
 
 router.post("/product", requireSignIn, isAdmin, formidable(), createProduct);
 router.get("/products", getAllProduct);

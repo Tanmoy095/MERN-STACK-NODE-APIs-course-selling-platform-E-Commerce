@@ -1,8 +1,8 @@
-import User from "../Models/user.mongo.js";
+import User from "../../Models/user.mongo.js";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 
-import { comparePassword, hashPassword } from "../helpers/auth.helpers.js";
+import { comparePassword, hashPassword } from "../../helpers/auth.helpers.js";
 dotenv.config();
 
 //things to do before saving to db
@@ -14,16 +14,16 @@ export const register = async (req, res) => {
     const { name, email, password, confirmPassword } = req.body;
     //all field require validation
     if (!name.trim()) {
-      res.json("Name is required");
+      res.json({ error: "Name is required" });
     }
     if (!email) {
-      res.json("email MISSING");
+      res.json({ error: "email MISSING" });
     }
     if (!password || password.length < 6) {
       res.json("password must be 6 character long");
     }
     if (password != confirmPassword) {
-      res.json("password does not match");
+      res.json({ error: "Password does not match" });
     }
     //check if email is taken
     const existingUser = await User.findOne({ email });
@@ -68,10 +68,10 @@ export const logIn = async (req, res) => {
     //all field require validation
 
     if (!email) {
-      res.json("email missing");
+      res.json({ error: "email missing" });
     }
     if (!password || password.length < 6) {
-      res.json("password must be 6 character long");
+      res.json({ error: "password must be 6 character long" });
     }
 
     //check if email is taken

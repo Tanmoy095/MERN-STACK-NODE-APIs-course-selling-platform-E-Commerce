@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 
 //middleware
-import { isAdmin, requireSignIn } from "../middlewares/auth.middleware.js";
+import { isAdmin, requireSignIn } from "../../middlewares/auth.middleware.js";
 //controllers
 import {
   getCategoryBySlug,
@@ -10,7 +10,7 @@ import {
   removeCategoryById,
   updateCategoryById,
   createCategory,
-} from "../controller/category.controller.js";
+} from "../../controller/Category/category.controller.js";
 
 router.post("/category", requireSignIn, isAdmin, createCategory);
 router.put("/category/:categoryId", requireSignIn, isAdmin, updateCategoryById);

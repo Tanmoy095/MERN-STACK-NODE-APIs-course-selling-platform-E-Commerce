@@ -2,10 +2,11 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import cors from "cors";
 //routes....
-import authRoutes from "./Routes/auth.router.js";
-import categoryRoutes from "./Routes/category.router.js";
-import productRoutes from "./Routes/product.route.js";
+import authRoutes from "./Routes/Auth_Routes/auth.router.js";
+import categoryRoutes from "./Routes/CategoryRoutes/category.router.js";
+import productRoutes from "./Routes/ProductRoutes/product.route.js";
 const app = express();
 
 dotenv.config();
@@ -22,6 +23,7 @@ mongoose
 
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors());
 //router middleware
 app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);

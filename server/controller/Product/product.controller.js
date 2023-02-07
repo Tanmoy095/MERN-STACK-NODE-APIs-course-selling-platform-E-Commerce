@@ -1,5 +1,5 @@
 import slugify from "slugify";
-import Product from "../Models/product.mongo.js";
+import Product from "../../Models/product.mongo.js";
 import fs from "fs";
 
 export const createProduct = async (req, res) => {

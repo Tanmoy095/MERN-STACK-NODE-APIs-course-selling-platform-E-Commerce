@@ -1,9 +1,13 @@
 import express from "express";
 const router = express.Router();
 //controllers
-import { logIn, register, secret } from "../controller/auth.controller.js";
+import {
+  logIn,
+  register,
+  secret,
+} from "../../controller/Authentication/auth.controller.js";
 //middleware
-import { requireSignIn, isAdmin } from "../middlewares/auth.middleware.js";
+import { requireSignIn, isAdmin } from "../../middlewares/auth.middleware.js";
 
 router.post("/register", register);
 router.post("/login", logIn);
